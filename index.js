@@ -11,6 +11,7 @@ const port = process.env.PORT || 5000;
 // fill call
 const app = express();
 const productRoute = require("./src/Routes/ProductRoute");
+const UesrRoute = require("./src/Routes/UserRoute");
 
 // middle wares
 app.use(cors());
@@ -18,7 +19,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-console.log(process.env.DB_USER, process.env.DB_PASSWORD);
 mongoose
   .connect(
     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@cluster0.6mulb.mongodb.net/restaurent?retryWrites=true&w=majority`,
@@ -31,6 +31,7 @@ mongoose
 
 // route
 app.use("/product", productRoute);
+app.use("/user", UesrRoute);
 
 app.get("/", (req, res) => {
   res.send("This is Management server");

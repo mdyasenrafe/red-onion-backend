@@ -8,6 +8,9 @@ const ProductSchema = new Schema({
   image: {
     type: String,
   },
+  name: {
+    type: String,
+  },
   type: {
     type: String,
   },
